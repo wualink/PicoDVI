@@ -77,8 +77,13 @@ static inline pio_sm_config dvi_serialiser_debug_program_get_default_config(uint
 
 #include "dvi_config_defs.h"
 static inline void dvi_serialiser_program_init(PIO pio, uint sm, uint offset, uint data_pins, bool debug) {
-    pio_sm_set_pins_with_mask(pio, sm, 2u << data_pins, 3u << data_pins);
-    pio_sm_set_pindirs_with_mask(pio, sm, ~0u, 3u << data_pins);
+    // pio_sm_set_pins_with_mask(pio, sm, 2u << data_pins, 3u << data_pins);
+    // pio_sm_set_pindirs_with_mask(pio, sm, ~0u, 3u << data_pins);
+
+    // Use 64-bit mask variants to support GPIO pins >= 32 (RP2350B)
+    pio_sm_set_pins_with_mask64(pio, sm, 2ull << data_pins, 3ull << data_pins);
+    pio_sm_set_pindirs_with_mask64(pio, sm, ~0ull, 3ull << data_pins);
+
     pio_gpio_init(pio, data_pins);
     pio_gpio_init(pio, data_pins + 1);
     pio_sm_config c;
