@@ -28,7 +28,9 @@ enum DVIresolution {
   DVI_RES_640x240p60, // "Tall" pixels, e.g. for 80-column text mode
   DVI_RES_800x240p60, // Same, 100-column
   DVI_RES_800x240p30, // Reduced refresh rate, less overclock required
-  DVI_RES_1280x720p30 // Experimenting, not working, plz don't use
+  DVI_RES_1280x720p30, // Experimenting, not working, plz don't use
+  DVI_RES_800x600p60,  // Native 800x600, VESA blanking — 400 MHz bit clock
+  DVI_RES_800x600p60_reduced // Native 800x600, CVT reduced blanking — 354 MHz
 };
 
 extern uint8_t dvi_vertical_repeat; ///< In libdvi/dvi.c

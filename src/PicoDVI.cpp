@@ -34,6 +34,8 @@ static struct {
     // be sorted out. Regardless, always keep this list 1:1 in sync with the
     // DVIresolution enum in PicoDVI.h.
     {dvi_timing_1280x720p_30hz, VREG_VOLTAGE_1_30, 1280, 720, 1},
+    {dvi_timing_800x600p_60hz, VREG_VOLTAGE_1_30, 800, 600, 1},
+    {dvi_timing_800x600p_reduced_60hz, VREG_VOLTAGE_1_30, 800, 600, 1},
 };
 
 static PicoDVI *dviptr = NULL; // For C access to active C++ object
